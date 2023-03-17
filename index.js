@@ -12,7 +12,7 @@ fetch(apiURL, a)
     grid.firstElementChild.remove();
     
     products.forEach((product)=>{
-        console.log(product);
+        
         const divMain = document.createElement('div')
         const cardBody = document.createElement('div')
         const img = document.createElement('img')
@@ -24,13 +24,18 @@ fetch(apiURL, a)
         const details = document.createElement('a')
 
         divMain.style.width = '18rem'
+        img.style.height = '288px'
         h5.style.textAlign = 'center'
 
-        divMain.classList.add('card','m-3')
+        divMain.classList.add('card','m-3','px-0')
         divFlex.classList.add('d-flex','justify-content-between','align-items-baseline')
         btnEdit.classList.add('btn','btn-primary')
         cardBody.className = 'card-body'
         img.className = 'card-img-top'
+
+        btnEdit.addEventListener('click', ()=>{
+            location.assign(`./backoffice.html?_id=${product._id}`)
+        })
 
         img.src = product.imageUrl
         h5.innerText = product.name
