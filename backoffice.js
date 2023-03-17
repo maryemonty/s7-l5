@@ -26,6 +26,22 @@ if(id){
     const subtitle = document.getElementById('subtitle')
     subtitle.innerText = '— Modifica elemento'
     subtitle.className = 'd-inline-block'
+    
+    fetch(endPoint,{
+        method,
+        headers,
+    })
+    .then(r => r.json())
+    .then(body => {
+        const {name, description, price, brand, imageUrl} = body
+
+        n.value = name
+        d.value = description
+        p.value = price
+        b.value = brand
+        i.value = imageUrl
+
+    })
 }
 
 form.addEventListener("submit",(e)=>{
