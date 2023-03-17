@@ -21,6 +21,7 @@ fetch(apiURL, a)
         const divFlex = document.createElement('div')
         const price = document.createElement('p')
         const btnEdit = document.createElement('button')
+        const details = document.createElement('a')
 
         divMain.style.width = '18rem'
         h5.style.textAlign = 'center'
@@ -36,10 +37,12 @@ fetch(apiURL, a)
         p.innerText = product.description
         price.innerText = product.price +'$'
         btnEdit.innerText = 'Edit'
+        details.innerText = 'Scopri di più'
+        details.href = `./details.html?_id=${product._id}`
         
         grid.append(divMain)
         divMain.append(img,cardBody)
         cardBody.append(h5,p,divFlex)
-        divFlex.append(price,btnEdit)
+        divFlex.append(price,details,btnEdit)
     })
 })

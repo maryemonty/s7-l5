@@ -6,15 +6,14 @@ const a = {
         }
 }
 
-const endpoint = id ? apiURL + id : apiURL
-const method = id ? "PUT" : "POST"
-
-fetch(endpoint,a)
+fetch(apiURL + id, a)
 .then(r => r.json())
-.then(body => {
-    for(let i = 0;i<body.length;i++){
-        const {brand, name, imageUrl, price} = body[i]
-        console.log(body[i].brand);
+.then(pic => {
+    console.log(pic.imageUrl);
+    const container = document.querySelector('.container')
 
-    }
+    const img = document.createElement('img')
+    img.src = pic.imageUrl
+
+    container.append(img)
 })
