@@ -13,7 +13,6 @@ fetch(apiURL, a)
     
     products.forEach((product)=>{
         console.log(product);
-        const grid = document.getElementById('crudazon-list');
         const divMain = document.createElement('div')
         const cardBody = document.createElement('div')
         const img = document.createElement('img')
