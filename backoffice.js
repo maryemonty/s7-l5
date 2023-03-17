@@ -25,8 +25,10 @@ buttonSubmit.addEventListener('click',()=>{
 if(id){
     const subtitle = document.getElementById('subtitle')
     const btnDelete = document.getElementById('delete-btn')
+    const btnEdit = document.getElementById('submit')
 
     subtitle.innerText = '— Modifica elemento'
+    btnEdit.innerText = 'Edit'
     subtitle.className = 'd-inline-block'
     btnDelete.classList.remove('d-none')
 
@@ -72,4 +74,7 @@ form.addEventListener("submit",(e)=>{
     })
 })
 
-
+const btnReset = document.getElementById('reset-btn')
+btnReset.addEventListener('click',()=>{
+    form.reset()
+})
