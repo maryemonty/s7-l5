@@ -13,8 +13,7 @@ fetch(endpoint,a)
 .then(r => r.json())
 .then(body => {
     for(let i = 0;i<body.length;i++){
-        const {brand, name, imageUrl, price} = body[i]
-        console.log(brand);
-
+        const {brand, name, imageUrl, price, description} = body[i]
+        console.log(body);
     }
 })
