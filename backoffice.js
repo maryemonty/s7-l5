@@ -24,8 +24,19 @@ buttonSubmit.addEventListener('click',()=>{
 
 if(id){
     const subtitle = document.getElementById('subtitle')
+    const btnDelete = document.getElementById('delete-btn')
+
     subtitle.innerText = '— Modifica elemento'
     subtitle.className = 'd-inline-block'
+    btnDelete.classList.remove('d-none')
+
+    btnDelete.addEventListener('click',(e)=>{
+        fetch(endPoint,{
+            method: 'DELETE',
+            headers,
+        })
+        .then(r => r.json())
+    })
     
     fetch(endPoint,{
         method,
