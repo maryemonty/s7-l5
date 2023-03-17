@@ -14,7 +14,7 @@ fetch(endpoint,a)
 .then(body => {
     for(let i = 0;i<body.length;i++){
         const {brand, name, imageUrl, price} = body[i]
-        console.log(body[i].brand);
+        console.log(brand);
 
     }
 })
