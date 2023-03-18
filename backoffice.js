@@ -18,10 +18,6 @@ const i = document.getElementById('url')
 const form = document.getElementById('form')
 const buttonSubmit = document.getElementById('submit')
 
-buttonSubmit.addEventListener('click',()=>{
-    
-})
-
 if(id){
     const subtitle = document.getElementById('subtitle')
     const btnDelete = document.getElementById('delete-btn')
@@ -95,20 +91,26 @@ if(id){
     })
 }
 
-form.addEventListener("submit",(e)=>{
-    e.preventDefault()
-    const products = {
-        name: n.value,
-        description: d.value,
-        price: p.value,
-        brand: b.value,
-        imageUrl: i.value
-    }
-    
-    fetch(endPoint,{
-        method,
-        headers,
-        body: JSON.stringify(products)
+buttonSubmit.addEventListener('click',()=>{
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        const products = {
+            name: n.value,
+            description: d.value,
+            price: p.value,
+            brand: b.value,
+            imageUrl: i.value
+        }
+        
+        fetch(endPoint,{
+            method,
+            headers,
+            body: JSON.stringify(products)
+        })
+        .then(r=>r.json())
+        .then(b => {
+            location.assign(`./details.html?_id=${b._id}`)
+        })
     })
 })
 
