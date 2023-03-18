@@ -32,12 +32,50 @@ if(id){
     subtitle.className = 'd-inline-block'
     btnDelete.classList.remove('d-none')
 
-    btnDelete.addEventListener('click',(e)=>{
-        fetch(endPoint,{
-            method: 'DELETE',
-            headers,
-        })
-        .then(r => r.json())
+    btnDelete.addEventListener('click',()=>{
+        const form = document.getElementById('form')
+        const confirm = document.createElement('div')
+        const p = document.createElement('p')
+        const yes = document.createElement('button')
+        const no = document.createElement('button')
+        
+        confirm.classList.add('border','bg-white','p-5','position-absolute','top-50', 'start-50', 'translate-middle')
+        yes.className = 'me-3'
+
+        if(n.value === ''){
+            p.innerHTML = 'Sei sicuro di voler eliminare questo prodotto?'
+        }else{
+
+            p.innerHTML = 
+            
+            `Sei sicuro di voler eliminare <span class='fs-4 fw-bold text-danger'> 
+            ${n.value} 
+            </span>?` 
+        }
+
+
+        yes.innerText = 'Sì'
+        no.innerText = 'No'
+
+        form.append(confirm)
+        confirm.append(p,yes,no)
+
+
+        yes.onclick = ()=>{
+            {
+                fetch(endPoint,{
+                    method: 'DELETE',
+                    headers,
+                })
+                .then(r => r.json())
+                .then(window.location.assign("./index.html"))
+            }
+        }
+
+        no.onclick = ()=>{
+            confirm.className = 'd-none'
+        }
+
     })
     
     fetch(endPoint,{
