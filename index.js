@@ -5,6 +5,8 @@ const a = {
         }
 }
 
+try{
+
 fetch(apiURL, a)
 .then(r => r.json())
 .then(products => {
@@ -51,3 +53,8 @@ fetch(apiURL, a)
         divFlex.append(price,details,btnEdit)
     })
 })
+
+}
+catch(err) {
+    document.getElementById("crudazon-list").innerHTML = err.message;
+}
