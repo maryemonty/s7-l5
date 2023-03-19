@@ -1,3 +1,13 @@
 .w{
     width: 30px;
 }
+
+figure img:hover{
+    opacity: 0;
+    cursor: zoom-in;
+}
+
+figure{
+    background-repeat: no-repeat;
+    object-fit: cover;
+}

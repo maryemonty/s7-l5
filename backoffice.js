@@ -15,8 +15,32 @@ const p = document.getElementById('price')
 const b = document.getElementById('brand')
 const i = document.getElementById('url')
 
+const input = [n.value,d.value,p.value,b.value,i.value]
+
 const form = document.getElementById('form')
 const buttonSubmit = document.getElementById('submit')
+
+// CREAZIONE POP UP CONFERMA
+const confirmed = document.createElement('div')
+const text = document.createElement('p')
+const yes = document.createElement('button')
+const no = document.createElement('button')
+
+yes.innerText = 'Sì'
+no.innerText = 'No'
+
+confirmed.classList.add('border','bg-white','p-5','position-absolute','top-50', 'start-50', 'translate-middle','d-none')
+yes.className = 'me-3'
+
+form.append(confirmed)
+confirmed.append(text,yes,no)
+
+no.onclick = (e)=>{
+    e.preventDefault()
+    confirmed.className = 'd-none'
+}
+
+// FINE POP UP
 
 if(id){
     const subtitle = document.getElementById('subtitle')
@@ -29,47 +53,24 @@ if(id){
     btnDelete.classList.remove('d-none')
 
     btnDelete.addEventListener('click',()=>{
-        const form = document.getElementById('form')
-        const confirm = document.createElement('div')
-        const p = document.createElement('p')
-        const yes = document.createElement('button')
-        const no = document.createElement('button')
-        
-        confirm.classList.add('border','bg-white','p-5','position-absolute','top-50', 'start-50', 'translate-middle')
-        yes.className = 'me-3'
+        confirmed.classList.remove('d-none')
 
         if(n.value === ''){
-            p.innerHTML = 'Sei sicuro di voler eliminare questo prodotto?'
+            text.innerHTML = 'Sei sicuro di voler eliminare questo prodotto?'
         }else{
 
-            p.innerHTML = 
+            text.innerHTML = 
             
             `Sei sicuro di voler eliminare <span class='fs-4 fw-bold text-danger'> 
             ${n.value} 
             </span>?` 
         }
 
-
-        yes.innerText = 'Sì'
-        no.innerText = 'No'
-
-        form.append(confirm)
-        confirm.append(p,yes,no)
-
-
         yes.onclick = ()=>{
-            {
-                fetch(endPoint,{
-                    method: 'DELETE',
-                    headers,
-                })
-                .then(r => r.json())
-                .then(window.location.assign("./index.html"))
-            }
-        }
-
-        no.onclick = ()=>{
-            confirm.className = 'd-none'
+            fetch(endPoint,{
+                method: 'DELETE',
+                headers,
+            })
         }
 
     })
@@ -115,6 +116,14 @@ buttonSubmit.addEventListener('click',()=>{
 })
 
 const btnReset = document.getElementById('reset-btn')
+console.log(input);
+
 btnReset.addEventListener('click',()=>{
-    form.reset()
+    confirmed.classList.remove('d-none')
+    text.innerText = 'Sei sicuro di voler resettare il form?'
+    yes.onclick = (e)=>{
+        e.preventDefault()
+        form.reset()
+        confirmed.classList.add('border','bg-white','p-5','position-absolute','top-50', 'start-50', 'translate-middle','d-none')
+    }
 })
